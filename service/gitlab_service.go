@@ -9,7 +9,7 @@ import (
 
 const (
 	gitlabApiUrl           = "https://gitlab.com/api/v4"
-	gitlabValidityEndpoint = "/personal_access_token/self"
+	gitlabValidityEndpoint = "/personal_access_tokens/self"
 )
 
 type GitlabService struct {
@@ -45,10 +45,12 @@ func (gls *GitlabService) GetTokenValidity() {
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
+		fmt.Println("[-] Token is not valid")
 		gls.isTokenValid = false
 		return
 	}
 
+	fmt.Println("[+] Token is valid")
 	gls.isTokenValid = true
 }
 

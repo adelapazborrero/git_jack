@@ -14,20 +14,22 @@ type GitService interface {
 }
 
 func NewgitService(token string) GitService {
-	isGitlab := strings.HasPrefix(token, "glpat_")
+	isGitlab := strings.HasPrefix(token, "glpat-")
 	isGithub := strings.HasPrefix(token, "ghp_")
 
 	if !isGitlab && !isGithub {
-		fmt.Println("Not a valid token format")
+		fmt.Println("[-] Not a valid token format")
 		os.Exit(0)
 	}
 
 	var gitService GitService
 
 	if isGitlab {
+		fmt.Println("[+] Gitlab token detected")
 		gitService = NewGitlabService(token)
 	}
 	if isGithub {
+		fmt.Println("[+] Github token detected")
 		gitService = NewGithubService(token)
 	}
 

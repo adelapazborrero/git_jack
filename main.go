@@ -4,7 +4,6 @@ import (
 	"flag"
 
 	"github.com/adelapazborrero/git_jack/service"
-	"github.com/adelapazborrero/git_jack/util"
 )
 
 func main() {
@@ -12,7 +11,5 @@ func main() {
 	flag.Parse()
 
 	gitService := service.NewgitService(*token)
-
-	repos := gitService.GetRepositories()
-	util.PrintRepositoryList(repos)
+	gitService.GetTokenValidity()
 }

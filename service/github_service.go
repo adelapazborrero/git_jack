@@ -46,10 +46,12 @@ func (ghs *GithubService) GetTokenValidity() {
 	defer response.Body.Close()
 
 	if response.StatusCode != http.StatusOK {
+		fmt.Println("[-] Token is not valid")
 		ghs.isTokenValid = false
 		return
 	}
 
+	fmt.Println("[+] Token is valid")
 	ghs.isTokenValid = true
 }
 
