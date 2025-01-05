@@ -10,10 +10,10 @@ import (
 
 type GitService interface {
 	GetTokenValidity()
-	GetRepositories() []model.Repository
+	GetRepositories() ([]model.Repository, error)
 }
 
-func NewgitService(token string) GitService {
+func NewGitService(token string) GitService {
 	isGitlab := strings.HasPrefix(token, "glpat-")
 	isGithub := strings.HasPrefix(token, "ghp_")
 
@@ -34,5 +34,4 @@ func NewgitService(token string) GitService {
 	}
 
 	return gitService
-
 }

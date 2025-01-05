@@ -54,10 +54,11 @@ func (gls *GitlabService) GetTokenValidity() {
 	gls.isTokenValid = true
 }
 
-func (gls *GitlabService) GetRepositories() []model.Repository {
-	return []model.Repository{
+func (gls *GitlabService) GetRepositories() ([]model.Repository, error) {
+	models := []model.Repository{
 		{
 			Name: "Test gitlab",
 		},
 	}
+	return models, nil
 }

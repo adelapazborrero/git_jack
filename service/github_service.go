@@ -55,10 +55,12 @@ func (ghs *GithubService) GetTokenValidity() {
 	ghs.isTokenValid = true
 }
 
-func (ghs *GithubService) GetRepositories() []model.Repository {
-	return []model.Repository{
+func (ghs *GithubService) GetRepositories() ([]model.Repository, error) {
+	models := []model.Repository{
 		{
 			Name: "Test github",
 		},
 	}
+
+	return models, nil
 }
